@@ -1,11 +1,10 @@
 void main() async {
   // Memanggail fungsi
-  //print(await tampilkanSemuaData(['Kue', 'Roti'], 2));
   await tampilkanSemuaData(['Kue', 'Roti'], 2);
 }
 
 Future<List<String>> tampilkanSemuaData(List<String> nama, int pengali) async {
-  // Membuat list kosong untung hasil data dan pengali
+  // Membuat list kosong untuk menampung hasil data dan pengali
   List<String> hasil = new List.empty(growable: true);
   Future.delayed(Duration(seconds: 1), () {
     // Menampilkan list kosong
