@@ -1,34 +1,26 @@
 void main() async {
   // Memanggail fungsi
-  listData();
-  hasil();
+  //print(await tampilkanSemuaData(['Kue', 'Roti'], 2));
+  await tampilkanSemuaData(['Kue', 'Roti'], 2);
 }
 
-// Membuat fungsi Data
-Future<void> listData() {
-  // Membuat List data
-  List<int> angka = [1, 7, 0, 8];
-  return Future.delayed(Duration(seconds: 1), () {
-    // Menampilkan ke console
-    print(angka);
+Future<List<String>> tampilkanSemuaData(List<String> nama, int pengali) async {
+  // Membuat list kosong untung hasil data dan pengali
+  List<String> hasil = new List.empty(growable: true);
+  Future.delayed(Duration(seconds: 1), () {
+    // Menampilkan list kosong
+    print('List awal sebelum di isi data = $hasil');
   });
-}
 
-// Memebuat funsi menampilkan hasil
-Future<void> hasil() {
-  List<int> angka = [1, 7, 0, 8];
-  return Future.delayed(Duration(seconds: 2), () {
-    // Menampilkan hasil ke console
-    angka.forEach((element) => kalkulasi(element));
+  // Fungsi perulangan dalam asynchronous
+  await Future.delayed(Duration(seconds: 2), () {
+    for (var i = 0; i < nama.length; i++) {
+      // Logika menambah data dalam list (nama * pengali)
+      hasil.add(' ${nama[i]}' * pengali);
+    }
+    // Menampilkan list yang sudah ditambah isinya
+    print('List akhir sebelum di isi data = $hasil');
   });
-}
-
-// Membuat fungsi data pengali
-Future<void> kalkulasi(var element) {
-  // Membuat logic parameter pengali
-  var x = element * 2;
-  return Future.delayed(Duration(seconds: 1), () {
-    // Menampilkan hasil ke console
-    print('Angka dalam list $element dikali 2 = $x');
-  });
+  // Return hasil list yang sudah ditambah isinya
+  return hasil;
 }
